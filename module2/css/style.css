@@ -1,0 +1,146 @@
+
+* {
+	box-sizing: border-box;
+}
+
+body {
+	font-family:  Arial, Helvetica, sans-serif;
+	margin-left: 50px;
+}
+
+h1 {
+	text-align: center;
+	margin: 40px 0px 40px 0px;
+}
+
+h3 {
+	color: white;
+}
+
+p {
+	position: absolute;
+	top: -16px;
+	right: 0px;
+	height: 25px;
+	width: 100px;
+	padding: 2px 0px 2px 0px;
+	text-align: center;
+	font-weight: bold;
+	border: 1px solid black;
+}
+
+#sectiontitle1 {
+	background-color: #ddd044;
+}
+
+#sectiontitle2 {
+	background-color: #449edd;
+}
+
+#sectiontitle3 {
+	background-color: #dd444b;
+}
+
+#sectiontitle1mobile, #sectiontitle2mobile, #sectiontitle3mobile {
+	color: #ffffff00;
+}
+
+div div:hover {
+	overflow:auto;
+	cursor: s-resize;
+}
+
+.row {
+	width: 100%;
+}
+
+@media (min-width: 992px) {
+	.col-lg-4 {
+		float:  left;
+		padding: 30px 10px 10px 10px;
+		border: 1px solid black;
+		background-color: gray;
+		margin: 10px;
+		position: relative;
+		height: 150px;
+		overflow: hidden;
+	}
+	.col-lg-4 {
+		width: 30%;
+	}
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+	.col-md-6, .col-md-12 {
+		float:  left;
+		padding: 30px 10px 10px 10px;
+		border: 1px solid black;
+		background-color: gray;
+		margin: 10px;
+		position: relative;
+		height: 150px;
+		overflow: hidden;
+	}
+	.col-md-6 {
+		width: 45%;
+	}
+	.col-md-12 {
+		width: 92.5%;
+	}
+}
+
+@media (max-width: 767px) {
+	.col-sm-12 {
+		float:  left;
+		padding: 30px 10px 10px 10px;
+		border: 1px solid black;
+		background-color: gray;
+		margin: 10px;
+		position: relative;
+		height: 150px;
+		overflow: hidden;
+	}
+	.col-sm-12 {
+		width: 90%;
+	}
+
+	h1 {
+	color: white;
+	}
+
+	h3 {
+	color: black;
+	text-align: left;
+	font-family:  Verdana, Geneva, sans-serif
+	margin: 40px 0px 40px 30px;
+	}
+
+	p {
+	position: absolute;
+	top: -16px;
+	right: 0px;
+	height: 25px;
+	width: 100%;
+	padding: 2px 0px 2px 0px;
+	text-align: center;
+	font-weight: bold;
+	border: 1px solid black;
+	}
+
+	#sectiontitle1 {
+		color: #ddd044;
+	}
+
+	#sectiontitle2 {
+		color: #449edd;
+	}
+
+	#sectiontitle3 {
+		color: #dd444b;
+	}
+
+	#sectiontitle1mobile, #sectiontitle2mobile, #sectiontitle3mobile {
+		color: black;
+		overflow: hidden;
+	}
+}
