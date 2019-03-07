@@ -87,62 +87,6 @@ document.addEventListener("DOMContentLoaded", function (event) {
     buildAndShowHomeHTML, // ***** <---- TODO: STEP 1: Substitute [...] ******
     true); // Explicitely setting the flag to get JSON from server processed into an object literal
 
-
-/*  function randomNumber() {
-    var randomNum = Math.floor(Math.random() * 5) + 1;
-    return randomNum;
-  }*/
-
-  //var randomNum = Math.floor(Math.random() * 5) + 1;
-
-/*  var randomNum = 5;*/
-
-/*  var classStar1 = document.querySelector("#star1").className;
-  var classStar2 = document.querySelector("#star2").className;
-  var classStar3 = document.querySelector("#star3").className;
-  var classStar4 = document.querySelector("#star4").className;
-  var classStar5 = document.querySelector("#star5").className; */
-/*  var classStar1;
-  var classStar2;
-  var classStar3;
-  var classStar4;
-  var classStar5;*/
-
-
-
-/*  if (randomNum == 5) {
-  classStar1 = "fa fa-star fa-3x";
-  classStar2 = "fa fa-star fa-3x";
-  classStar3 = "fa fa-star fa-3x";
-  classStar4 = "fa fa-star fa-3x";
-  classStar5 = "fa fa-star fa-3x"; 
-  }*/
-
-
-/*  classStar1 = document.querySelector("#call-btn").className;
-
-  console.log(classStar1);
-/*  document.querySelector("#star2").className = classStar2;
-  document.querySelector("#star3").className = classStar3;
-  document.querySelector("#star4").className = classStar4;
-  document.querySelector("#star5").className = classStar5;*/
-
-/*var switchMenuToActive = function () {
-  // Remove 'active' from home button
-  var classes = document.querySelector("#navHomeButton").className;
-  classes = classes.replace(new RegExp("active", "g"), "");
-  document.querySelector("#navHomeButton").className = classes;
-
-  // Add 'active' to menu button if not already there
-  classes = document.querySelector("#navMenuButton").className;
-  if (classes.indexOf("active") === -1) {
-    classes += " active";
-    document.querySelector("#navMenuButton").className = classes;
-  }
-};*/
-
-
-
 });
 // *** finish **
 
@@ -384,7 +328,6 @@ function insertItemPrice(html,
   return html;
 }
 
-
 // Appends portion name in parens if it exists
 function insertItemPortionName(html,
                                portionPropName,
@@ -399,25 +342,39 @@ function insertItemPortionName(html,
   return html;
 }
 
-/*var setStars = function () {
-  
-  var clsName = document.querySelector("#star1").className;
-
-  console.log(clsname);
-  
-
-};*/
-
-// setStars();
-
 dc.showAboutHtml = function () {
   showLoading("#main-content");
 
-
-
   $ajaxUtils.sendGetRequest(
     aboutHtml, 
-    function (aboutHtml){insertHtml("#main-content", aboutHtml)}, 
+    function (aboutHtml) {
+
+      insertHtml("#main-content", aboutHtml)
+
+      var randomNum = randomNumber();
+
+      var ratingTextHtml = "{{ratingText}}";
+      var randomRatingText = randomNum + "-star rating";
+      var ratingText = insertProperty(ratingTextHtml, "ratingText", randomRatingText);
+      insertHtml("#ratingText", ratingText);
+
+      for ( var i = 1; i <= 5; i++ ) {
+
+        if ( i <= randomNum) {
+
+          var clsName = document.querySelector("#star" + i).className;
+          var starClsName = clsName.replace("", "fa fa-star fa-3x");
+          document.querySelector("#star" + i).className = starClsName;
+
+        } else {
+
+          var clsName = document.querySelector("#star" + i).className;
+          var starClsName = clsName.replace("", "fa fa-star-o fa-3x");
+          document.querySelector("#star" + i).className = starClsName;
+
+        }        
+      }  
+    }, 
     false)
 
 };
@@ -427,31 +384,10 @@ function randomNumber() {
   return randomNum;
 }
 
-
 global.$dc = dc;
 
 })(window);
 
-
-/*var setStars = function () {
-  
-  var clsName = window.document.querySelector("#star1").className;
-
-  console.log(clsname);*/
-  
-  // Remove 'active' from home button
-/*  var classes = document.querySelector("#navHomeButton").className;
-  classes = classes.replace(new RegExp("active", "g"), "");
-  document.querySelector("#navHomeButton").className = classes;
-
-  // Add 'active' to menu button if not already there
-  classes = document.querySelector("#navMenuButton").className;
-  if (classes.indexOf("active") === -1) {
-    classes += " active";
-    document.querySelector("#navMenuButton").className = classes;
-  }*/
-
-/*setStars();*/
 
 
 
