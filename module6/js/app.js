@@ -1,13 +1,13 @@
-(function (global) {
+ (function () {
 
 	'use strict';
 
-	angular.module('LunchCheck', [])
-	.controller('LunchCheckController', LunchCheckController);
+	var app = angular.module("LunchCheck", ['ngSanitize']);
+	
+	app.controller("LunchCheckController", LunchCheckController);
 
-	LunchCheckController.$inject = ['$scope'];
+	//  LunchCheckController.$inject = ['$scope'];
 	function LunchCheckController($scope, $interpolate) {
-
 		$scope.lunchList = "";
 		$scope.message = "";
 
@@ -25,48 +25,19 @@
 
 			if (lunchListSplit[0] === undefined) {
 				$scope.message = "Please enter data.";
+				$scope.TextToUser = $interpolate('<font size="3" color="red">{{message}}</font>')($scope); 
 			} else if (lunchListSplit.length <= 3) {
 				$scope.message = "Enjoy!";
+				$scope.TextToUser = $interpolate('<font size="3" color="green">{{message}}</font>')($scope);
 			} else {
 				$scope.message = "Too Much!";
+				$scope.TextToUser = $interpolate('<font size="3" color="green">{{message}}</font>')($scope);
 			}
 		}
 
 	};
 
-	// var insertProperty = function (string, propName, propValue) {
-	//   var propToReplace = "{{" + propName + "}}";
-	//   string = string.replace(new RegExp(propToReplace, "g"), propValue);
-	//   return string;
-	// };
-	// var insertHtml = function (selector, html) {
- //  		var targetElem = document.querySelector(selector);
- //  		targetElem.innerHTML = html;
-	// };
-
-	// var tc = {};
-
-	// tc.colorMessage = function () {
-	//   var textColorHtml = "{{textColor}}";
- //      var bootstrapColor = "text-success";
- //      var colorTextHtml = insertProperty(textColorHtml, "textColor", bootstrapColor);
- //      insertHtml("#message", colorTextHtml);
-
-	// };
-
-	// global.$tc = tc;
-
-
-	// var insertProperty = function (string, propName, propValue) {
-	//   var propToReplace = "{{" + propName + "}}";
-	//   string = string
-	//     .replace(new RegExp(propToReplace, "g"), propValue);
-	//   return string;
-	// };
-	
-
-})(window);
-
+})();
 // (function (global) {
 
 // 	var tc = {};
