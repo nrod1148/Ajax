@@ -85,7 +85,7 @@ body {
 	}
 }
 
-/* tablet devices (s in bootstrap, between 768 and 991px) */
+/* tablet devices (sm in bootstrap, between 768 and 991px) */
 @media (min-width: 768px) and (max-width: 991px) {
 	.navbar-toggle {
 		display: none;
