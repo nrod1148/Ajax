@@ -7,6 +7,9 @@ angular.module('ShoppingListCheckOff', [])
 .controller('AlreadyBoughtController', AlreadyBoughtController)
 .service('ShoppingListCheckOffService', ShoppingListCheckOffService); 
 
+ToBuyController.$inject = ['$scope'];
+AlreadyBoughtController.$inject = ['$scope'];
+
 // To Buy List Controller
 ToBuyController.$inject = ['ShoppingListCheckOffService'];
 function ToBuyController(ShoppingListCheckOffService) {
@@ -64,9 +67,9 @@ function ShoppingListCheckOffService() {
 
   // List of shopping items
 
-  var toBuyItems = [{name: "eggs", quantity: 12}, {name: "milks", quantity: 2}, 
-    {name: "tomatoes", quantity: 4}, {name: "onions", quantity: 2}, 
-    {name: "strawberries", quantity: 22}];
+  var toBuyItems = [{name: "eggs", quantity: 12, pricePerItem: 20}, {name: "milk cartons", quantity: 2, pricePerItem: 150}, 
+    {name: "tomatoes", quantity: 4, pricePerItem: 50}, {name: "onions", quantity: 2, pricePerItem: 70}, 
+    {name: "strawberries", quantity: 22, pricePerItem: 11}];
 
   // service.addItem = function (itemName, quantity) {
   //   if ((maxItems === undefined) ||
@@ -83,7 +86,7 @@ function ShoppingListCheckOffService() {
   // };
 
   service.buyItem = function (itemIndex) {
-    service.addItem(toBuyItems[itemIndex].name, toBuyItems[itemIndex].quantity);
+    service.addItem(toBuyItems[itemIndex].name, toBuyItems[itemIndex].quantity, toBuyItems[itemIndex].pricePerItem);
     toBuyItems.splice(itemIndex, 1);
     
   };
@@ -94,10 +97,11 @@ function ShoppingListCheckOffService() {
 
   var boughtItems = [];
 
-  service.addItem = function (itemName, quantity) {
+  service.addItem = function (itemName, itemQuantity, pricePerItem) {
     var boughtItem = {
       name: itemName,
-      quantity: quantity
+      quantity: itemQuantity,
+      pricePerItem:  pricePerItem
     };
       
     boughtItems.push(boughtItem);
